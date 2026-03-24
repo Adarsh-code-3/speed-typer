@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --bg-primary: #0a0a0f;
+  --accent-purple: #7c3aed;
+  --accent-blue: #2563eb;
+  --accent-cyan: #06b6d4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-primary);
+  font-family: "Inter", sans-serif;
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* Animated gradient blobs */
+@keyframes blobMove1 {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+  }
+  25% {
+    transform: translate(10%, 15%) scale(1.1);
+  }
+  50% {
+    transform: translate(-5%, 10%) scale(0.95);
+  }
+  75% {
+    transform: translate(-10%, -5%) scale(1.05);
+  }
+}
+
+@keyframes blobMove2 {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+  }
+  25% {
+    transform: translate(-15%, 10%) scale(1.05);
+  }
+  50% {
+    transform: translate(10%, -10%) scale(1.1);
+  }
+  75% {
+    transform: translate(5%, 15%) scale(0.9);
+  }
+}
+
+@keyframes blobMove3 {
+  0%, 100% {
+    transform: translate(0%, 0%) scale(1);
+  }
+  25% {
+    transform: translate(15%, -10%) scale(0.95);
+  }
+  50% {
+    transform: translate(-10%, -15%) scale(1.05);
+  }
+  75% {
+    transform: translate(-5%, 10%) scale(1.1);
+  }
+}
+
+.blob-1 {
+  animation: blobMove1 20s ease-in-out infinite;
+}
+
+.blob-2 {
+  animation: blobMove2 25s ease-in-out infinite;
+}
+
+.blob-3 {
+  animation: blobMove3 18s ease-in-out infinite;
+}
+
+/* Progress bar glow */
+@keyframes progressGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(124, 58, 237, 0.4), 0 0 24px rgba(124, 58, 237, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(124, 58, 237, 0.6), 0 0 40px rgba(124, 58, 237, 0.3);
+  }
+}
+
+.progress-glow {
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+/* Pulsing dot */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+.pulse-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Shimmer effect on progress bar */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.shimmer-effect {
+  animation: shimmer 2.5s ease-in-out infinite;
+}
